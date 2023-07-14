@@ -7,7 +7,7 @@ import ShlokaCard from '../Components/ShlokaCard';
 
 const ChapterDetails = () => {
     const {CNO,SNO} = useParams();
-    const [shlokas, setShlokas] = useState();
+    const [shlokas, setShlokas] = useState(1);
     const [slokaNO, setSlokaNo] = useState(1);
     const [chapterdetails, setChapterdetails] = useState('');
 
