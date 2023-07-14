@@ -6,7 +6,7 @@ const ChapterCard = (props) => {
     const Navigate = useNavigate();
     return (
         <>
-            <div className='bg-slate-200 rounded-xl w-72 flex flex-col items-center m-3 p-2 cursor-pointer hover:bg-slate-100' onClick={()=>{Navigate(`/chapter/${chapter.chapter_number}/:SNO`)}}>
+            <div className='bg-slate-200 rounded-xl w-72 flex flex-col items-center m-3 p-2 cursor-pointer hover:bg-slate-100' onClick={()=>{Navigate(`/chapter/${chapter.chapter_number}`)}}>
                 <div>
                     <img src="/images/chapter.png" className='w-60' alt="chapter" />
                 </div>

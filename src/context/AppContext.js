@@ -5,6 +5,8 @@ import fetchChapters from '../API/BhagvatGitaAPI'
 const AppContext = (props) => {
 
     const [chapters, setChapters] = useState();
+    const [slokaNO, setSlokaNo] = useState(1);
+    
 
     useEffect(() => {
         fetchData()
@@ -17,7 +19,7 @@ const AppContext = (props) => {
     }
     console.log(chapters);
     return (
-        <Context.Provider value={{ chapters, setChapters }}>
+        <Context.Provider value={{ chapters, setChapters,slokaNO,setSlokaNo }}>
             {props.children}
         </Context.Provider>
     )

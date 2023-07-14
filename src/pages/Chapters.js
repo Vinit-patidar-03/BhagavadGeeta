@@ -1,10 +1,16 @@
-import React, { useContext } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from 'react'
 import Context from '../context/Context'
 import ChapterCard from '../Components/ChapterCard';
 
 const Chapters = () => {
 
-    const {chapters} = useContext(Context);
+    const {chapters,setSlokaNo} = useContext(Context);
+
+    useEffect(()=>
+    {
+        setSlokaNo(1);
+    },[])
 
   return (
     <>

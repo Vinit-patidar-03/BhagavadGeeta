@@ -1,35 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import fetchChapters from '../API/BhagvatGitaAPI'
 import { useParams } from 'react-router-dom'
 import ChapterDetailsCard from '../Components/ChapterDetailsCard';
 import ShlokaCard from '../Components/ShlokaCard';
+import Context from '../context/Context';
 
 const ChapterDetails = () => {
-    const { CNO, SNO } = useParams();
+    const {slokaNO,setSlokaNo} = useContext(Context);
+    const {CNO} = useParams();
     const [shlokas, setShlokas] = useState();
-    const [slokaNO, setSlokaNo] = useState(1);
     const [chapterdetails, setChapterdetails] = useState('');
 
     useEffect(() => {
         fetchChapterData();
         fetchChapterDetails();
-    }, [CNO, SNO])
+    }, [CNO, slokaNO])
 
     const fetchChapterData = () => {
-        if (SNO !== ':SNO')
-        {
-            fetchChapters(`${CNO}/verses/${SNO}/`).then((res) => {
+            fetchChapters(`${CNO}/verses/${parseInt(slokaNO)}/`).then((res) => {
                 setShlokas(res.data);
             })
         }
-       else
-       {
-          fetchChapters(`${CNO}/verses/${slokaNO}/`).then((res) => {
-          setShlokas(res.data);
-       })
-       }
-    }
 
 const fetchChapterDetails = () => {
     fetchChapters(`${CNO}/`).then((res) =>{
@@ -37,11 +29,13 @@ const fetchChapterDetails = () => {
     })
 }
 
+console.log(slokaNO);
+
 const handleSNO = (e) => {
-    if (e === 'incr' && slokaNO !== shlokas.length - 1) {
-        setSlokaNo(SNO + 1);
-    } else if (e === 'decr' && SNO !== 1) {
-        setSlokaNo(SNO - 1);
+    if (e === 'incr' && parseInt(slokaNO) !== shlokas.length - 1) {
+        setSlokaNo(parseInt(slokaNO) + 1);
+    } else if (e === 'decr' && parseInt(slokaNO) !== 1) {
+        setSlokaNo(parseInt(slokaNO) - 1);
     }
 }
 return (
