@@ -34,7 +34,7 @@ const ChapterDetails = () => {
     const handleSNO = (e) => {
         if (e === 'incr' && SNO !== shlokas.length - 1) {
             setSNO(SNO + 1);
-        } else if (e === 'decr' && SNO === 0) {
+        } else if (e === 'decr' && SNO !== 1) {
             setSNO(SNO - 1);
         }
     }

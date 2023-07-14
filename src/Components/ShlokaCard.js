@@ -32,10 +32,10 @@ const ShlokaCard = (props) => {
                 <div className='p-2 relative'>
                     <h1 className='font-bold'>Commentry:</h1>
                     <p className='text-center p-3'>
-                        {Shloka.commentaries.filter((elem)=>{return elem.author_name === "Sri Shankaracharya"})[0].description}
+                        {Shloka.commentaries.filter((elem)=>{return elem.author_name === "Swami Chinmayananda"})[0].description}
                     </p>
                     <p className='absolute bottom-0 right-0 text-sm font-semibold px-2'>
-                        ~Sri Shankaracharya
+                        ~Swami Chinmayananda
                     </p>
                 </div>
                 
