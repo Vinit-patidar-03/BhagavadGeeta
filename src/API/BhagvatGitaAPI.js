@@ -5,7 +5,7 @@ const MainUrl ='https://bhagavad-gita3.p.rapidapi.com/v2/chapters'
 const options = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': '591687f196mshbe9c4dc1cc4d36fp1fa1f3jsn96e9e1a34c9a',
+    'X-RapidAPI-Key': 'c710081029msh091669b9f833cffp14c72ajsnef139d8e26ab',
     'X-RapidAPI-Host': 'bhagavad-gita3.p.rapidapi.com'
   }
 };
