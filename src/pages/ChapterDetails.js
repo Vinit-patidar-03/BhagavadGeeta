@@ -6,7 +6,7 @@ import ChapterDetailsCard from '../Components/ChapterDetailsCard';
 import ShlokaCard from '../Components/ShlokaCard';
 
 const ChapterDetails = () => {
-    const { CNO } = useParams();
+    const { CNO,shlokNO } = useParams();
 
     const [shlokas, setShlokas] = useState();
     const [SNO, setSNO] = useState(1);

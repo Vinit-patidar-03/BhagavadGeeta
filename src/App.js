@@ -11,7 +11,7 @@ function App() {
          <Navbar />
          <Routes>
           <Route exact path='/' element={<Chapters/>}/>
-          <Route path='/chapter/:CNO' element={<ChapterDetails />} />
+          <Route path='/chapter/:CNO/:SNO' element={<ChapterDetails />} />
          </Routes>
          </Router>
          
