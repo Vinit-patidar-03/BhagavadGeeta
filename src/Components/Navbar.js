@@ -9,7 +9,6 @@ const Navbar = () => {
     const [shlokaNO,setShlokaNo] = useState(0);
     const {chapters} = useContext(Context);
 
-    console.log(shlokaNO);
   return (
     <>
         <nav className='bg-slate-200 fixed top-0 z-10 w-full flex items-center justify-between'>

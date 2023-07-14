@@ -12,7 +12,6 @@ const AppContext = (props) => {
 
     const fetchData = () => {
         fetchChapters(``).then((res) => {
-            console.log(res.data);
             setChapters(res.data);
         })
     }
