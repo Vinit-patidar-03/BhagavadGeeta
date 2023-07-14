@@ -27,11 +27,11 @@ if(SNO !==':SNO')
         })}
 else{
 
-}
 fetchChapters(`${CNO}/verses/${shlokas}/`).then((res) => {
             console.log(res.data);
             setShlokas(res.data);
-        })    }
+        })}
+    }
 
     const fetchChapterDetails = () => {
         fetchChapters(`${CNO}/`).then((res) => {
