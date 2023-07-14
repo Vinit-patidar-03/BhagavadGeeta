@@ -19,11 +19,19 @@ const ChapterDetails = () => {
     }, [CNO,SNO])
 
     const fetchChapterData = () => {
+if(SNO !==':SNO')
+{
         fetchChapters(`${CNO}/verses/${SNO}/`).then((res) => {
             console.log(res.data);
             setShlokas(res.data);
-        })
-    }
+        })}
+else{
+
+}
+fetchChapters(`${CNO}/verses/${shlokas}/`).then((res) => {
+            console.log(res.data);
+            setShlokas(res.data);
+        })    }
 
     const fetchChapterDetails = () => {
         fetchChapters(`${CNO}/`).then((res) => {
