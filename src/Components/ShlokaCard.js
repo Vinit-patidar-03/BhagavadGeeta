@@ -12,11 +12,11 @@ const ShlokaCard = (props) => {
                     <h1 className='font-bold'>Shloka: {Shloka.verse_number}</h1>
                     <div className='flex justify-center flex-col mt-2'>
                         <h1 className='text-center font-semibold'>{Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index === 0 }) : ''}</h1>
-                        <pre className='text-center p-3'>
+                        <p className='text-center p-3'>
                             {
                                 Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index !== 0 }).join('\n') : Shloka.text.split('\n\n').join('\n')
                             }
-                        </pre>
+                        </p>
                     </div>
                 </div>
                 <div className='p-2 relative'>

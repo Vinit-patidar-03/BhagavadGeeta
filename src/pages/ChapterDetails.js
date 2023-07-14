@@ -6,12 +6,13 @@ import ChapterDetailsCard from '../Components/ChapterDetailsCard';
 import ShlokaCard from '../Components/ShlokaCard';
 
 const ChapterDetails = () => {
-    const { CNO,shlokNO } = useParams();
-
+    const {CNO,SNO} = useParams();
     const [shlokas, setShlokas] = useState();
-    const [SNO, setSNO] = useState(1);
+    const [slokaNO, setSlokaNo] = useState(1);
     const [chapterdetails, setChapterdetails] = useState('');
 
+    console.log(CNO)
+    console.log(SNO);
     useEffect(() => {
         fetchChapterData();
         fetchChapterDetails();
@@ -32,10 +33,10 @@ const ChapterDetails = () => {
     }
 
     const handleSNO = (e) => {
-        if (e === 'incr' && SNO !== shlokas.length - 1) {
-            setSNO(SNO + 1);
+        if (e === 'incr' && slokaNO !== shlokas.length - 1) {
+            setSlokaNo(SNO + 1);
         } else if (e === 'decr' && SNO !== 1) {
-            setSNO(SNO - 1);
+            setSlokaNo(SNO - 1);
         }
     }
     return (
