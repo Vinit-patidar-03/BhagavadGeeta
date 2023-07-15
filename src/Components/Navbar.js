@@ -21,7 +21,7 @@ const Navbar = () => {
                 <li onClick={()=>{Navigate('/')}} className='cursor-pointer'><img src="/images/BhagvadGita.png" className=' w-28' alt="logo" /></li>
             </ul> 
             <li className='list-none'>
-            <select name="chapters" id="chapters" className='w-28 h-5 rounded-xl text-xs' value={chaptNO} onChange={(event)=>{setChaptNO(event.target.value)}}>
+            <select name="chapters" id="chapters" className=' w-24 h-5 rounded-xl text-xs' value={chaptNO} onChange={(event)=>{setChaptNO(event.target.value)}}>
                 <option value={0}>select chapter</option>
                 {chapters &&
                    chapters.map((elem)=>
@@ -30,7 +30,7 @@ const Navbar = () => {
                    })
                 }
             </select>
-            <select name="shloka" id="shloka" className=' w-12 h-5 rounded-xl text-xs ml-3 px-1' value={shlokaNO} onChange={(event)=>{setShlokaNo(event.target.value)}}>
+            <select name="shloka" id="shloka" className='w-26 h-5 rounded-xl text-xs ml-3 px-1 ShlokaDetail' value={shlokaNO} onChange={(event)=>{setShlokaNo(event.target.value)}}>
                 <option value={0}>select shloka</option>
                 {chaptNO !== 0 &&
                     [...Array(chapters[chaptNO-1].verses_count)].map((elem,index)=>
