@@ -17,7 +17,7 @@ const AppContext = (props) => {
             setChapters(res.data);
         })
     }
-    console.log(chapters);
+     
     return (
         <Context.Provider value={{ chapters, setChapters,slokaNO,setSlokaNo }}>
             {props.children}

@@ -4,7 +4,16 @@ const ShlokaCard = (props) => {
 
     const { Shloka } = props;
 
-    console.log(Shloka.text.split('\n\n').filter((elem, index) => { return index !== 0 }).join('\n'));
+    const readShloka = () => {
+        const msg = new SpeechSynthesisUtterance();
+        msg.lang = 'hi';
+        msg.text = Shloka.text;
+        msg.volume = 1;
+        msg.pitch = 1;
+        msg.rate = 1;
+        window.speechSynthesis.speak(msg);
+    }
+
     return (
         <>
             <div>
@@ -12,17 +21,21 @@ const ShlokaCard = (props) => {
                     <h1 className='font-bold'>Shloka: {Shloka.verse_number}</h1>
                     <div className='flex justify-center flex-col mt-2'>
                         <h1 className='text-center font-semibold'>{Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index === 0 }) : ''}</h1>
-                        <p className='text-center p-3'>
-                            {
-                                Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index !== 0 }).join('\n') : Shloka.text.split('\n\n').join('\n')
-                            }
-                        </p>
+                        <div className='flex justify-center items-center'>
+                            <p className='text-center p-3'>
+                                {
+                                    Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index !== 0 }).join('\n') : Shloka.text.split('\n\n').join('\n')
+                                }
+                            </p>
+                            <i className="fa-solid fa-microphone cursor-pointer" onClick={readShloka}></i>
+                        </div>
                     </div>
+
                 </div>
                 <div className='p-2 relative'>
                     <h1 className='font-bold'>Description:</h1>
                     <p className='text-center p-3'>
-                        {Shloka.translations.filter((elem)=>{return elem.author_name ==="Swami Tejomayananda"})[0].description}
+                        {Shloka.translations.filter((elem) => { return elem.author_name === "Swami Tejomayananda" })[0].description}
                     </p>
                     <p className='absolute bottom-0 right-0 text-sm font-semibold px-2'>
                         ~Swami Tejomayananda
@@ -32,13 +45,13 @@ const ShlokaCard = (props) => {
                 <div className='p-2 relative'>
                     <h1 className='font-bold'>Commentry:</h1>
                     <p className='text-center p-3'>
-                        {Shloka.commentaries.filter((elem)=>{return elem.author_name === "Swami Chinmayananda"})[0].description}
+                        {Shloka.commentaries.filter((elem) => { return elem.author_name === "Swami Chinmayananda" })[0].description}
                     </p>
                     <p className='absolute bottom-0 right-0 text-sm font-semibold px-2'>
                         ~Swami Chinmayananda
                     </p>
                 </div>
-                
+
             </div>
         </>
     )
