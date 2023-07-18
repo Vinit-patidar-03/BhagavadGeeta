@@ -4,10 +4,10 @@ const ShlokaCard = (props) => {
 
     const { Shloka } = props;
 
-    const readShloka = () => {
+    const readShloka = (message) => {
         const msg = new SpeechSynthesisUtterance();
         msg.lang = 'hi';
-        msg.text = Shloka.text;
+        msg.text = message;
         msg.volume = 1;
         msg.pitch = 1;
         msg.rate = 1;
@@ -25,7 +25,7 @@ const ShlokaCard = (props) => {
                                 {
                                     Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index !== 0 }).join('\n') : Shloka.text.split('\n\n').join('\n')
                                 }
-                                <i className="fa-solid fa-microphone cursor-pointer" onClick={readShloka}></i>
+                                <i className="fa-solid fa-volume-high cursor-pointer" onClick={readShloka(Shloka.text)}></i>
                             </div>
                     </div>
 
