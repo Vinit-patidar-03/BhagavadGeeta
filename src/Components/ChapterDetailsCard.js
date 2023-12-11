@@ -12,7 +12,7 @@ const ChapterDetailsCard = (props) => {
                 <div className='text-center'>
                     <h1 className='font-bold'>Chapter {chapter.chapter_number}</h1>
                     <h2 className='font-semibold mt-3'>Name: {chapter.name}</h2>
-                    <h3 className='font-semibold'>Shlokas: {chapter.verses_count}</h3>
+                    <h3 className='font-semibold'>Total Shlokas: {chapter.verses_count}</h3>
                 </div>
             </div>
             <hr />

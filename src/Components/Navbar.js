@@ -39,7 +39,7 @@ const Navbar = () => {
                     })
                 }
             </select>
-            <button className='px-2 bg-slate-300 rounded-full mx-2' disabled={shlokaNO === 0 || chaptNO === 0} onClick={()=>{Navigate(`/chapter/${chaptNO}`);setSlokaNo(parseInt(shlokaNO))}}><i className="fa-solid fa-arrow-right fa-lg"></i></button>
+            <button className='px-2 bg-slate-300 rounded-full ml-2' disabled={shlokaNO === 0 || chaptNO === 0} onClick={()=>{Navigate(`/chapter/${chaptNO}`);setSlokaNo(parseInt(shlokaNO))}}><i className="fa-solid fa-arrow-right fa-lg"></i></button>
             </li>
         </nav>
     </>

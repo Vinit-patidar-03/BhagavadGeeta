@@ -50,7 +50,7 @@ const ChapterDetails = () => {
                         <ShlokaCard Shloka={shlokas} />
 
                     </div>
-                    <div className='flex justify-evenly mt-5 mb-10'>
+                    <div className='flex justify-evenly my-5'>
                         <button className='px-5 py-2 text-5xl' onClick={() => { handleSNO('decr') }}><GrFormPreviousLink /></button>
                         <button className='px-5 py-2 text-5xl' onClick={() => { handleSNO('incr') }}><GrFormNextLink /></button>
                     </div>
