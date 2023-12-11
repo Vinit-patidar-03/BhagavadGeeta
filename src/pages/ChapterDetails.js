@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import fetchChapters from '../API/BhagvatGitaAPI'
 import { useParams } from 'react-router-dom'
 import ChapterDetailsCard from '../Components/ChapterDetailsCard';
+import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import ShlokaCard from '../Components/ShlokaCard';
 import Context from '../context/Context';
 
@@ -49,9 +50,9 @@ const ChapterDetails = () => {
                         <ShlokaCard Shloka={shlokas} />
 
                     </div>
-                    <div className='flex justify-evenly my-5'>
-                        <button className='px-5 py-2 bg-black text-white font-bold rounded-full' onClick={() => { handleSNO('decr') }}>Previous</button>
-                        <button className='px-5 py-2 bg-black text-white font-bold rounded-full' onClick={() => { handleSNO('incr') }}>Next</button>
+                    <div className='flex justify-evenly mt-5 mb-10'>
+                        <button className='px-5 py-2 text-5xl' onClick={() => { handleSNO('decr') }}><GrFormPreviousLink /></button>
+                        <button className='px-5 py-2 text-5xl' onClick={() => { handleSNO('incr') }}><GrFormNextLink /></button>
                     </div>
                 </div>}
         </>

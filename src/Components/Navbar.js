@@ -18,7 +18,7 @@ const Navbar = () => {
     <>
         <nav className='bg-slate-200 fixed top-0 z-10 w-full flex items-center justify-between'>
             <ul className='list-none'>
-                <li onClick={()=>{Navigate('/')}} className='cursor-pointer'><img src="/images/BhagvadGita.png" className=' w-28' alt="logo" /></li>
+                <li onClick={()=>{Navigate('/')}} className='cursor-pointer'><img src="/images/BhagvadGita.png" className='w-28' alt="logo" /></li>
             </ul> 
             <li className='list-none'>
             <select name="chapters" id="chapters" className=' w-24 h-5 rounded-xl text-xs' value={chaptNO} onChange={(event)=>{setChaptNO(event.target.value)}}>
@@ -39,7 +39,7 @@ const Navbar = () => {
                     })
                 }
             </select>
-            <button className='px-2 bg-slate-300 rounded-full ml-3' disabled={shlokaNO === 0 || chaptNO === 0} onClick={()=>{Navigate(`/chapter/${chaptNO}`);setSlokaNo(parseInt(shlokaNO))}}><i className="fa-solid fa-arrow-right fa-lg"></i></button>
+            <button className='px-2 bg-slate-300 rounded-full mx-2' disabled={shlokaNO === 0 || chaptNO === 0} onClick={()=>{Navigate(`/chapter/${chaptNO}`);setSlokaNo(parseInt(shlokaNO))}}><i className="fa-solid fa-arrow-right fa-lg"></i></button>
             </li>
         </nav>
     </>

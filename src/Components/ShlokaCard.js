@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react';
 
 const ShlokaCard = (props) => {
 
     const { Shloka } = props;
+
+    const AddGoogleScript = useCallback( () => {
+        let script = document.createElement('script');
+        script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslate";
+        script.type = "text/javascript";
+        document.body.appendChild(script);
+        window.googleTranslate = googleTranslate;
+    },[]);
+
+    useEffect(()=>{
+        AddGoogleScript();
+    },[AddGoogleScript])
+
+    const googleTranslate = () => {
+        new window.google.translate.TranslateElement(
+            {
+              pageLanguage: "hi",
+              
+            },
+            "translate"
+          );
+    }
 
     const readShloka = (message) => {
         const msg = new SpeechSynthesisUtterance();
@@ -21,6 +43,7 @@ const ShlokaCard = (props) => {
                     <div className='flex items-center'>
                         <h1 className='font-bold'>Shloka: {Shloka.verse_number}</h1>
                         <i className="fa-solid fa-volume-high cursor-pointer mx-2" onClick={() => { readShloka(Shloka.text) }} title='click to speak'></i>
+                        <div id="translate"></div>
                     </div>
                     <div className='flex justify-center flex-col mt-2'>
                         <h1 className='text-center font-semibold'>{Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index === 0 }) : ''}</h1>
