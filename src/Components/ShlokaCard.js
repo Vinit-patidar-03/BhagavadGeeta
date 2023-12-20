@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { MdMusicNote } from "react-icons/md";
+import { MdMusicOff } from "react-icons/md";
 
 const ShlokaCard = (props) => {
 
     const { Shloka } = props;
+    const [songStatus, setSongStatus] = useState(true);
+    const [audio] = useState(new Audio('/flute.mp3'));
 
     const readShloka = (message) => {
         const msg = new SpeechSynthesisUtterance();
@@ -14,6 +18,20 @@ const ShlokaCard = (props) => {
         window.speechSynthesis.speak(msg);
     }
 
+    const playSound = () => {
+
+        if (audio.paused) {
+            audio.play();
+            audio.loop = true;
+            setSongStatus(false);
+        } else {
+            audio.pause();
+            audio.loop = false;
+            setSongStatus(true);
+        }
+
+    }
+
     return (
         <>
             <div>
@@ -21,6 +39,7 @@ const ShlokaCard = (props) => {
                     <div className='flex items-center'>
                         <h1 className='font-bold'>Shloka: {Shloka.verse_number}</h1>
                         <i className="fa-solid fa-volume-high cursor-pointer mx-2" onClick={() => { readShloka(Shloka.text) }} title='click to speak'></i>
+                        {songStatus ? <MdMusicOff className='cursor-pointer' onClick={playSound} /> : <MdMusicNote className='cursor-pointer' onClick={playSound} />}
                     </div>
                     <div className='flex justify-center flex-col mt-2'>
                         <h1 className='text-center font-semibold'>{Shloka.text.split('\n\n').length === 3 ? Shloka.text.split('\n\n').filter((elem, index) => { return index === 0 }) : ''}</h1>
