@@ -1,29 +1,27 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react'
 import Context from '../context/Context'
 import ChapterCard from '../Components/ChapterCard';
 
 const Chapters = () => {
 
-    const {chapters,setSlokaNo} = useContext(Context);
+    const { chapters, setSlokaNo } = useContext(Context);
 
-    useEffect(()=>
-    {
+    useEffect(() => {
         setSlokaNo(1);
-    },[])
+    }, [setSlokaNo])
 
-  return (
-    <>
-        <div className='flex flex-wrap justify-center mt-[60px]'>
-            {chapters &&
-                chapters.map((elem)=>
+    return (
+        <>
+            <div className='flex flex-wrap justify-center mt-[60px]'>
                 {
-                    return <ChapterCard chapter={elem} key={elem.id} />
-                })
-            }
-        </div>
-    </>
-  )
+                    chapters &&
+                    chapters.map((elem) => {
+                        return <ChapterCard chapter={elem} key={elem.id} />
+                    })
+                }
+            </div>
+        </>
+    )
 }
 
 export default Chapters

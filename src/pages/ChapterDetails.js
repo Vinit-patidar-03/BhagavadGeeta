@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import fetchChapters from '../API/BhagvatGitaAPI'
 import { useParams } from 'react-router-dom'
 import ChapterDetailsCard from '../Components/ChapterDetailsCard';
@@ -13,22 +12,22 @@ const ChapterDetails = () => {
     const [shlokas, setShlokas] = useState();
     const [chapterdetails, setChapterdetails] = useState('');
 
-    useEffect(() => {
-        fetchChapterData();
-        fetchChapterDetails();
-    }, [CNO, slokaNO])
-
-    const fetchChapterData = () => {
+    const fetchChapterData = useCallback(() => {
         fetchChapters(`${CNO}/verses/${parseInt(slokaNO)}/`).then((res) => {
             setShlokas(res.data);
         })
-    }
+    }, [CNO, slokaNO])
 
-    const fetchChapterDetails = () => {
+    const fetchChapterDetails = useCallback(() => {
         fetchChapters(`${CNO}/`).then((res) => {
             setChapterdetails(res.data)
         })
-    }
+    }, [CNO])
+
+    useEffect(() => {
+        fetchChapterData();
+        fetchChapterDetails();
+    }, [CNO, fetchChapterData, fetchChapterDetails, slokaNO])
 
     const handleSNO = (e) => {
         if (e === 'incr' && parseInt(slokaNO) !== shlokas.length - 1) {
@@ -40,11 +39,13 @@ const ChapterDetails = () => {
     return (
         <>
             <div className='mt-[60px] bg-slate-100'>
-                {chapterdetails &&
+                {
+                    chapterdetails &&
                     <ChapterDetailsCard chapter={chapterdetails} />
                 }
             </div>
-            {shlokas &&
+            {
+                shlokas &&
                 <div>
                     <div>
                         <ShlokaCard Shloka={shlokas} />
@@ -54,7 +55,8 @@ const ChapterDetails = () => {
                         <button className='px-5 py-2 text-5xl' onClick={() => { handleSNO('decr') }}><GrFormPreviousLink /></button>
                         <button className='px-5 py-2 text-5xl' onClick={() => { handleSNO('incr') }}><GrFormNextLink /></button>
                     </div>
-                </div>}
+                </div>
+            }
         </>
     )
 }
